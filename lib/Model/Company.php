@@ -7,7 +7,14 @@ class Model_Company extends \Model_Table {
 	function init(){
 		parent::init();
 
+
 		$this->addField('name');
+
+		$this->hasMany('customerCareApp/Department','customerCareApp_company_id');
+		$this->hasMany('customerCareApp/User','customerCareApp_company_id');
+		$this->hasMany('customerCareApp/Issue','customerCareApp_company_id');
+		$this->hasMany('customerCareApp/EmailTemplate','customerCareApp_company_id');
+
 
 		$this->add('dynamic_model/Controller_AutoCreator');
 	}

@@ -7,6 +7,7 @@ class Model_EmailTemplate extends \Model_Table {
 	function init(){
 		parent::init();
 
+		$this->hasOne('customerCareApp/Company','customerCareApp_company_id');
 
 		$this->addField('name');
 
