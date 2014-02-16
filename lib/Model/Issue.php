@@ -11,6 +11,12 @@ class Model_Issue extends \Model_Table {
 
 		$this->addField('name');
 
+		$this->addHook('beforeSave',$this);
+
 		$this->add('dynamic_model/Controller_AutoCreator');
+	}
+
+	function beforeSave(){
+		
 	}
 }
