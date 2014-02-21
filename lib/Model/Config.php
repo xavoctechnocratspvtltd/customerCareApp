@@ -11,7 +11,8 @@ class Model_Config extends \Model_Table {
 
 		$this->addField('name');   
 		$this->addField('value');   
-		$this->addField('updated')->type('dateTime')->defaultValue(date('Y-m-d').time('hh:mm:ss'))->type('hidden');   
+		//$this->addField('updated')->type('dateTime')->defaultValue(date('Y-m-d').time('hh:mm:ss'));   
+		$this->addField('updated')->type('dateTime');   
 
 
 		$this->addHook('beforeDelete',$this);
