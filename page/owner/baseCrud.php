@@ -1,11 +1,8 @@
 <?php
 
-class page_customerCareApp_page_owner_baseCruds extends page_componentBase_page_owner_baseCruds{
+class page_customerCareApp_page_owner_baseCrud extends page_componentBase_page_owner_main{
 	function init(){
 		parent::init();
-
-		$tabs=$this->add('Tabs');
-		$tabs=$tabs->addTab('init CRUDs');
 
 		$company_crud = $this->add('CRUD');
 		$company_crud->setModel('customerCareApp/Company');

@@ -10,6 +10,8 @@ class Model_Config extends \Model_Table {
 		$this->hasOne('customerCareApp/Company','customerCareApp_company_id');
 
 		$this->addField('name');   
+		$this->addField('value');   
+		$this->addField('updated')->type('dateTime')->defaultValue(date('Y-m-d').time('hh:mm:ss'))->type('hidden');   
 
 
 		$this->addHook('beforeDelete',$this);
