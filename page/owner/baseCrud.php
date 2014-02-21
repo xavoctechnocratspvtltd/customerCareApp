@@ -27,6 +27,13 @@ class page_customerCareApp_page_owner_baseCrud extends page_componentBase_page_o
 		
 		$ticket_crud = $this->add('CRUD');
 		$ticket_crud->setModel('customerCareApp/Ticket');
+		
+		$config_crud = $this->add('CRUD');
+		$config_crud->setModel('customerCareApp/Config');
+
+		$priority_crud = $this->add('CRUD');
+		$priority_crud->setModel('customerCareApp/Ticket_Priority');
+
 
 	}
 }

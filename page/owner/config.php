@@ -5,17 +5,20 @@ class page_customerCareApp_page_owner_config extends page_componentBase_page_own
 		parent::init();
 
 		$this->add('H3')->set('Configuration');
+		$url=$this->add('customerCareApp/Model_Config');
+		$url->addCondition('name','=','URL');
+		$url->tryLoadAny();
+		$helpDeskName=$this->add('customerCareApp/Model_Config');
+		$helpDeskName->addCondition('name','=','HelpDeskName');
+		$helpDeskName->tryLoadAny();
+		$company=$this->add('customerCareApp/Model_Config');
+		$company->addCondition('name','=','Company');
+		$company->tryLoadAny();
+
 		$form=$this->add('Form');
-			$config=$this->add('customerCareApp/Model_Config');
-
-			// foreach($config as $name=>$value){
-			// $config->addCondition('name','=','URL');
-			// $config->tryLoadAny();
-			// 	$config->add('h3')->set($value);
-			// }
-			$array=array();
-
-		$form->addField('line','URL')->set($config['value']);
+		$form->addField('line','URL')->set($url['value']);
+		$form->addField('line','Company')->set($url['value']);
+		$form->addField('line','help_desk_name')->set($helpDeskName['value']);
 
 		$form->addSubmit('Update');
 
