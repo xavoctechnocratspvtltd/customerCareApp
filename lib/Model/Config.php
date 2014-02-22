@@ -7,10 +7,12 @@ class Model_Config extends \Model_Table {
 	function init(){
 		parent::init();
 
-		$this->hasOne('customerCareApp/Company','customerCareApp_company_id');
+		$this->hasOne('customerCareApp/Company','customerCareApp_company_id')->caption('Company');
+		$this->hasOne('customerCareApp/Ticket_Priority','customerCareApp_ticket_priority_id')->caption('Default Priority');
+		
 
-		$this->addField('name');   
-		$this->addField('value');   
+		$this->addField('helpDeskName')->caption('Help Desk Name');   
+		$this->addField('helpDeskUrl')->caption('Help Desk URL');   
 		//$this->addField('updated')->type('dateTime')->defaultValue(date('Y-m-d').time('hh:mm:ss'));   
 		$this->addField('updated')->type('dateTime');   
 

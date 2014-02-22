@@ -4,23 +4,26 @@ class page_customerCareApp_page_owner_config extends page_componentBase_page_own
 	function init(){
 		parent::init();
 
-		$this->add('H3')->set('Configuration');
-		$url=$this->add('customerCareApp/Model_Config');
-		$url->addCondition('name','=','URL');
-		$url->tryLoadAny();
-		$helpDeskName=$this->add('customerCareApp/Model_Config');
-		$helpDeskName->addCondition('name','=','HelpDeskName');
-		$helpDeskName->tryLoadAny();
-		$company=$this->add('customerCareApp/Model_Config');
-		$company->addCondition('name','=','Company');
-		$company->tryLoadAny();
+		// $this->add('H3')->set('Configuration');
+		// $url=$this->add('customerCareApp/Model_Config');
+		// $url->addCondition('name','=','URL');
+		// $url->tryLoadAny();
+		// $helpDeskName=$this->add('customerCareApp/Model_Config');
+		// $helpDeskName->addCondition('name','=','HelpDeskName');
+		// $helpDeskName->tryLoadAny();
+		// $company=$this->add('customerCareApp/Model_Config');
+		// $company->addCondition('name','=','Company');
+		// $company->tryLoadAny();
 
+		// $form=$this->add('Form');
+		// $form->addField('line','URL')->set($url['value']);
+		// $form->addField('line','Company')->set($url['value']);
+		// $form->addField('line','help_desk_name')->set($helpDeskName['value']);
+		//$form->addSubmit('Update');
 		$form=$this->add('Form');
-		$form->addField('line','URL')->set($url['value']);
-		$form->addField('line','Company')->set($url['value']);
-		$form->addField('line','help_desk_name')->set($helpDeskName['value']);
-
+		$form->setModel('customerCareApp/Config');
 		$form->addSubmit('Update');
+
 
 		if($form->isSubmitted()){
 			$config_url_up=$this->add('customerCareApp/Model_Config');
