@@ -7,11 +7,11 @@ class Model_Team extends \Model_Table {
 	function init(){
 		parent::init();
 
-		$this->hasOne('customerCareApp/Department','customerCareApp_department_id');
+		$this->hasOne('customerCareApp/Department','department_id');
 
 		$this->addField('name');
 
-		$this->hasMany('customerCareApp/Staff','customerCareApp_team_id');
+		$this->hasMany('customerCareApp/Staff','team_id');
 
 		$this->addHook('beforeDelete',$this);
 		$this->addHook('beforeSave',$this);

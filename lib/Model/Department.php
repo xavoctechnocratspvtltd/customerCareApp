@@ -7,12 +7,12 @@ class Model_Department extends \Model_Table {
 	function init(){
 		parent::init();
 
-		$this->hasOne('customerCareApp/Company','customerCareApp_company_id');
+		$this->hasOne('customerCareApp/Company','company_id');
 
 		$this->addField('name');
 
-		$this->hasMany('customerCareApp/Team','customerCareApp_department_id');
-		$this->hasMany('customerCareApp/Ticket','customerCareApp_department_id');
+		$this->hasMany('customerCareApp/Team','department_id');
+		$this->hasMany('customerCareApp/Ticket','department_id');
 
 		$this->addHook('beforeDelete',$this);
 		$this->addHook('beforeSave',$this);

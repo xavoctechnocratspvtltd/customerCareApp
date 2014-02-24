@@ -10,10 +10,10 @@ class Model_Company extends \Model_Table {
 
 		$this->addField('name');
 
-		$this->hasMany('customerCareApp/Department','customerCareApp_company_id');
-		$this->hasMany('customerCareApp/User','customerCareApp_company_id');
-		$this->hasMany('customerCareApp/Issue','customerCareApp_company_id');
-		$this->hasMany('customerCareApp/EmailTemplate','customerCareApp_company_id');
+		$this->hasMany('customerCareApp/Department','company_id');
+		$this->hasMany('customerCareApp/User','company_id');
+		$this->hasMany('customerCareApp/Issue','company_id');
+		$this->hasMany('customerCareApp/EmailTemplate','company_id');
 
 		$this->addHook('beforeDelete',$this);
 		$this->addHook('beforeSave',$this);

@@ -6,10 +6,10 @@ class Model_Ticket extends \Model_Table {
 	var $table= "customerCareApp_ticket";
 	function init(){
 		parent::init();
-
-		$this->hasOne('customerCareApp/Department','customerCareApp_department_id');
-		$this->hasOne('customerCareApp/User','customerCareApp_user_id');
-		$this->hasOne('customerCareApp/Ticket_Priority','customerCareApp_ticket_priority_id');
+		$this->hasOne('customerCareApp/Company','company_id');
+		$this->hasOne('customerCareApp/Department','department_id');
+		$this->hasOne('customerCareApp/User','user_id');
+		$this->hasOne('customerCareApp/Ticket_Priority','ticket_priority_id');
 
 		$this->addField('name');
 
