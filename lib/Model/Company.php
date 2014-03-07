@@ -7,9 +7,11 @@ class Model_Company extends \Model_Table {
 	function init(){
 		parent::init();
 
-		$this->hasOne('epan','epan_id');
+		$this->hasOne('Epan','epan_id');
 
 		$this->addField('name');
+		$this->addField('company_address');
+		
 
 		$this->hasMany('customerCareApp/Department','company_id');
 		$this->hasMany('customerCareApp/User','company_id');
