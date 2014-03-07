@@ -8,6 +8,7 @@ class Model_Company extends \Model_Table {
 		parent::init();
 
 		$this->hasOne('Epan','epan_id');
+		$this->hasOne('customerCareApp/Config','config_id');
 
 		$this->addField('name');
 		$this->addField('company_address');
