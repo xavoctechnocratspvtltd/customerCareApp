@@ -17,6 +17,15 @@ class Model_EmailTemplate extends \Model_Table {
 	}
 
 	function beforeSave(){
+		$emailtemplate=$this->add('customerCareApp/Model_Emailtemplate');
+		$this->loaded();
+		if($emailtemplate->loaded()){
+		$emailtemplate->addCondition('id','<>',$this->id);
+		}
+		$emailtemplate->addCondition('name',$this['name']);
+		$emailtemplate->tryLoadAny();
+		throw $this->exception('it is exist');
+		
 		
 	}
 }

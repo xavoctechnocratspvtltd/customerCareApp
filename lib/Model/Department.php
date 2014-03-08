@@ -28,6 +28,15 @@ class Model_Department extends \Model_Table {
 	}
 
 	function beforeSave(){
+		$company=$this->add('customerCareApp/Model_Department');
+		$this->loaded();
+		if($department->loaded()){
+		$department->addCondition('id','<>',$this->id);
+		}
+		$department->addCondition('name',$this['name']);
+		$department->tryLoadAny();
+		throw $this->exception('it is exist');
+		
 		
 	}
 }

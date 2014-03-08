@@ -17,6 +17,15 @@ class Model_Issue extends \Model_Table {
 	}
 
 	function beforeSave(){
+		$issue=$this->add('customerCareApp/Model_Issue');
+		$this->loaded();
+		if($issue->loaded()){
+		$issue->addCondition('id','<>',$this->id);
+		}
+		$issue->addCondition('name',$this['name']);
+		$issue->tryLoadAny();
+		throw $this->exception('it is exist');
+		
 		
 	}
 }

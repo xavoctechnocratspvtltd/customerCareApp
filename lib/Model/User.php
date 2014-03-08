@@ -25,6 +25,15 @@ class Model_User extends \Model_Table {
 	}
 
 	function beforeSave(){
+		$user=$this->add('customerCareApp/Model_User');
+		$this->loaded();
+		if($user->loaded()){
+		$user->addCondition('id','<>',$this->id);
+		}
+		$user->addCondition('name',$this['name']);
+		$user->tryLoadAny();
+		throw $this->exception('it is exist');
+		
 		
 	}
 }

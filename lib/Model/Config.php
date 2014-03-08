@@ -24,6 +24,7 @@ class Model_Config extends \Model_Table {
 	}
 
 	function beforeDelete(){
+		
 
 	}
 

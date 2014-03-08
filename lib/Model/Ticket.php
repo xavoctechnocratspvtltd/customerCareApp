@@ -19,6 +19,15 @@ class Model_Ticket extends \Model_Table {
 	}
 
 	function beforeSave(){
+		$ticket=$this->add('customerCareApp/Model_Ticket');
+		$this->loaded();
+		if($ticket->loaded()){
+		$ticket->addCondition('id','<>',$this->id);
+		}
+		$ticket->addCondition('name',$this['name']);
+		$ticket->tryLoadAny();
+		throw $this->exception('it is exist');
+		
 		
 	}
 }

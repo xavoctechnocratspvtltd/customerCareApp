@@ -25,6 +25,15 @@ class Model_Team extends \Model_Table {
 	}
 
 	function beforeSave(){
+		$Model_Team=$this->add('customerCareApp/Model_Team');
+		$this->loaded();
+		if($Model_Team->loaded()){
+		$Model_Team->addCondition('id','<>',$this->id);
+		}
+		$team->addCondition('name',$this['name']);
+		$team->tryLoadAny();
+		throw $this->exception('it is exist');
+		
 		
 	}
 }

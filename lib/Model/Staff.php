@@ -17,6 +17,15 @@ class Model_Staff extends \Model_Table {
 	}
 
 	function beforeSave(){
+		$staff=$this->add('customerCareApp/Model_Staff');
+		$this->loaded();
+		if($staff->loaded()){
+		$staff->addCondition('id','<>',$this->id);
+		}
+		$staff->addCondition('name',$this['name']);
+		$staff->tryLoadAny();
+		throw $this->exception('it is exist');
+		
 		
 	}
 }
