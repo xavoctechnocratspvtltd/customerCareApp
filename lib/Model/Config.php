@@ -30,6 +30,15 @@ class Model_Config extends \Model_Table {
 	}
 
 	function beforeSave(){
+		$config=$this->add('customerCareApp/Model_Config');
+		$this->loaded();
+		if($config->loaded()){
+		$config->addCondition('id','<>',$this->id);
+		}
+		$config->addCondition('name',$this['name']);
+		$config->tryLoadAny();
+		throw $this->exception('it is exist');
+		
 		
 	}
 }
