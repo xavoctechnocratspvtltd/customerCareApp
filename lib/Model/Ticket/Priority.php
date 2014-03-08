@@ -10,7 +10,6 @@ class Model_Ticket_Priority extends \Model_Table {
 
 		$this->addField('name');
 		$this->addField('color');
-		$this->hasMany('customerCareApp/Ticket','ticket_id');
 
 		$this->addHook('beforeDelete',$this);
 		$this->addHook('beforeSave',$this);

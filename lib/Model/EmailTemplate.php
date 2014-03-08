@@ -12,6 +12,7 @@ class Model_EmailTemplate extends \Model_Table {
 		$this->addField('name');
 
 		$this->addHook('beforeSave',$this);
+		$this->addHook('beforeDelete',$this);
 
 		$this->add('dynamic_model/Controller_AutoCreator');
 	}
@@ -28,4 +29,8 @@ class Model_EmailTemplate extends \Model_Table {
 		
 		
 	}
+	function beforeDelete(){
+		
+	}
+
 }
