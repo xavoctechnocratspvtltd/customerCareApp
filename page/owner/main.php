@@ -12,6 +12,7 @@ class page_customerCareApp_page_owner_main extends page_componentBase_page_owner
 		$menu->addMenuItem('customerCareApp_page_owner_team','team');
 		$menu->addMenuItem('customerCareApp-page_owner_user','User');
 		$menu->addMenuItem('customerCareApp-page_owner_user','EmailTemplate');
+		$menu->addMenuItem('customerCareApp-page_owner_user','EmailTemplate');
 		
 	}
 }
