@@ -1,5 +1,5 @@
 <?php
-class customerCareApp_page_owner_guest extends customerCareApp_Page_owner_guest{
+class customerCareApp_page_owner_openTicketGuest extends customerCareApp_Page_owner_main{
 	function init(){
 		parent::init();
 		$button=$this->add('button')->set('open ticket');

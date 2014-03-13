@@ -7,7 +7,6 @@ class Model_Config extends \Model_Table {
 	function init(){
 		parent::init();
 
-		$this->hasOne('customerCareApp/Company','company_id')->caption('Company');
 		$this->hasOne('customerCareApp/Ticket_Priority','ticket_priority_id')->caption('Default Priority');
 		$this->hasOne('customerCareApp/Ticket_Priority','ticket_status_id')->caption('Default Priority');
 		
