@@ -8,7 +8,8 @@ class Model_Config extends \Model_Table {
 		parent::init();
 
 		$this->hasOne('customerCareApp/Ticket_Priority','ticket_priority_id')->caption('Default Priority');
-		$this->hasOne('customerCareApp/Ticket_Priority','ticket_status_id')->caption('Default Priority');
+		$this->hasOne('customerCareApp/Ticket_Status','ticket_status_id')->caption('Default Priority');
+		$this->hasOne('Epan','epan_id');
 		
 
 		$this->addField('helpDeskName')->caption('Help Desk Name');   

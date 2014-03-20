@@ -19,14 +19,14 @@ class Model_Ticket_Priority extends \Model_Table {
 	}
 
 	function beforeSave(){
-		$status=$this->add('customerCareApp/Model_Priority');
-		$this->loaded();
-		if($status->loaded()){
-		$status->addCondition('id','<>',$this->id);
-		}
-		$status->addCondition('name',$this['name']);
-		$status->tryLoadAny();
-		throw $this->exception('it is exist');
+		// $status=$this->add('customerCareApp/Model_Priority');
+		// $this->loaded();
+		// if($status->loaded()){
+		// $status->addCondition('id','<>',$this->id);
+		// }
+		// $status->addCondition('name',$this['name']);
+		// $status->tryLoadAny();
+		// throw $this->exception('it is exist');
 		
 		
 	}
