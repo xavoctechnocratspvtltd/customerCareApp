@@ -23,14 +23,13 @@ class Model_Ticket_Status extends \Model_Table {
 	}
 
 	function beforeSave(){
-		$status=$this->add('customerCareApp/Model_Status');
-		$this->loaded();
-		if($status->loaded()){
-		$status->addCondition('id','<>',$this->id);
-		}
-		$status->addCondition('name',$this['name']);
-		$status->tryLoadAny();
-		throw $this->exception('it is exist');
+		$old_status=$this->add('customerCareApp/Model_Ticket_Status');
+		if($this->loaded())
+			$old_status->addCondition('id','<>',$this->id);
+		$old_status->addCondition('name',$this['name']);
+		$old_status->tryLoadAny();
+		if($old_status->loaded())
+			throw $this->exception("Already Exists!!");
 		
 		
 	}

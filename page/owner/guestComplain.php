@@ -1,5 +1,5 @@
 <?php
-class page_customerCareApp_page_owner_guestComplain extends customerCareApp_Page_owner_mail{
+class page_customerCareApp_page_owner_guestComplain extends customerCareApp_Page_owner_main{
 	function init(){
 		parent::init();
 		$this->add('h3')->set('Welcome to Support center');
