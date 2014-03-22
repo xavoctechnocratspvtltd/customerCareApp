@@ -38,14 +38,13 @@ class Model_Company extends \Model_Table {
 	}
 
 	function beforeSave(){
-		$company=$this->add('customerCareApp/Model_Company');
-		$this->loaded();
-		if($company->loaded()){
-		$company->addCondition('id','<>',$this->id);
-		}
-		$company->addCondition('name',$this['name']);
-		$company->tryLoadAny();
-		throw $this->exception('it is exist');
+		$old_company=$this->add('customerCareApp/Model_Company');
+		if($this->loaded())
+			$old_company->addCondition('id','<>',$this->id);
+		$old_company->addCondition('name',$this['name']);
+		$old_company->tryLoadAny();
+		if($old_company->loaded())
+			throw $this->exception("Already Exists!!");
 		
 
 		}
