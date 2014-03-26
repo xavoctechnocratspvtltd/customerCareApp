@@ -10,6 +10,8 @@ class Model_EmailTemplate extends \Model_Table {
 		$this->hasOne('customerCareApp/Company','customerCareApp_company_id');
 
 		$this->addField('name');
+		$this->addField('subject');
+		$this->addField('body');
 
 		$this->addHook('beforeSave',$this);
 		$this->addHook('beforeDelete',$this);
@@ -18,16 +20,13 @@ class Model_EmailTemplate extends \Model_Table {
 	}
 
 	function beforeSave(){
-		$emailtemplate=$this->add('customerCareApp/Model_Emailtemplate');
-		$this->loaded();
-		if($emailtemplate->loaded()){
-		$emailtemplate->addCondition('id','<>',$this->id);
-		}
-		$emailtemplate->addCondition('name',$this['name']);
-		$emailtemplate->tryLoadAny();
-		throw $this->exception('it is exist');
-		
-		
+		$old_emailTemplate=$this->add('customerCareApp/EmailTemplate');
+		if($this->loaded())
+			$old_emailTemplate->addCondition('id','<>',$this->id);
+		$old_emailTemplate->addCondition('name',$this['name']);
+		$old_emailTemplate->tryLoadAny();
+		if($old_emailTemplate->loaded())
+			throw $this->exception("Already Exists!!");
 	}
 	function beforeDelete(){
 		

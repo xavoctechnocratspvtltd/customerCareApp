@@ -28,14 +28,14 @@ class Model_Department extends \Model_Table {
 	}
 
 	function beforeSave(){
-		$company=$this->add('customerCareApp/Model_Department');
-		$this->loaded();
-		if($department->loaded()){
-		$department->addCondition('id','<>',$this->id);
-		}
-		$department->addCondition('name',$this['name']);
-		$department->tryLoadAny();
-		throw $this->exception('it is exist');
+		$old_department=$this->add('customerCareApp/Model_Departmentx	');
+		if($this->loaded())
+			$old_department->addCondition('id','<>',$this->id);
+		$old_department->addCondition('name',$this['name']);
+		$old_department->tryLoadAny();
+		if($old_department->loaded())
+			throw $this->exception("Already Exists!!");
+		
 		
 		
 	}

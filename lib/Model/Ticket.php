@@ -9,7 +9,7 @@ class Model_Ticket extends \Model_Table {
 		$this->hasOne('customerCareApp/Company','company_id');
 		$this->hasOne('customerCareApp/Department','department_id');
 		$this->hasOne('customerCareApp/User','user_id');
-		$this->hasOne('customerCareApp/Issue','issue_id');
+		$this->hasOne('customerCareApp/TicketType','ticketType_id');
 		$this->hasOne('customerCareApp/Ticket_Priority','ticket_priority_id');
 
 		$this->addField('name');
