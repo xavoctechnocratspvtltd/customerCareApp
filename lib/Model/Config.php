@@ -7,21 +7,12 @@ class Model_Config extends \Model_Table {
 	function init(){
 		parent::init();
 
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 		// $this->hasOne('customerCareApp/Company','company_id')->caption('Company');
-		$this->hasOne('customerCareApp/Ticket_Priority','ticket_priority_id')->caption('Default Priority');
-		$this->hasOne('customerCareApp/Ticket_Status','ticket_status_id')->caption('Default Priority');
-=======
-		$this->hasOne('customerCareApp/Ticket_Priority','ticket_priority_id')->caption('Default Priority');
-		$this->hasOne('customerCareApp/Ticket_Status','ticket_status_id')->caption('Default Priority');
-		$this->hasOne('Epan','epan_id');
->>>>>>> 54a22c44b5a08afa82fafeb7f646f4cbca08f6e0
-=======
+		
 		$this->hasOne('customerCareApp/Ticket_Priority','ticket_priority_id')->caption('Default Priority');
 		$this->hasOne('customerCareApp/Ticket_Status','ticket_status_id')->caption('Default Priority');
 		$this->hasOne('Epan','epan_id');
->>>>>>> 8d0084677c3144c8393b7d30bc4ec74d70c15f74
 		
 
 		$this->addField('helpDeskName')->caption('Help Desk Name');   

@@ -7,13 +7,13 @@ class page_customerCareApp_page_owner_config extends page_customerCareApp_page_o
 		// $crud->setModel('customerCareApp/Config');
 
 		$model=$this->add('customerCareApp/Model_Config');
-<<<<<<< HEAD
+
 		$model->addCondition('epan_id',$this->api->current_website->id);
 		$model->loadAny();
 		$form=$this->add('Form');
 		$form->setModel($model);
 		$form->addSubmit('Submit');
-=======
+
 		
 		$model_loaded=$this->add('customerCareApp/Model_Config');
 		$model_loaded->addCondition('epan_id',$this->api->current_website->id);
@@ -31,6 +31,6 @@ class page_customerCareApp_page_owner_config extends page_customerCareApp_page_o
 			$form->update();
 			$form->js()->reload()->execute();
 		}
->>>>>>> 8d0084677c3144c8393b7d30bc4ec74d70c15f74
+
 	}
 }
