@@ -18,7 +18,7 @@ class Model_EmailTemplate extends \Model_Table {
 	}
 
 	function beforeSave(){
-		$emailtemplate=$this->add('customerCareApp/Model_Emailtemplate');
+		/*$emailtemplate=$this->add('customerCareApp/Model_Emailtemplate');
 		$this->loaded();
 		if($emailtemplate->loaded()){
 		$emailtemplate->addCondition('id','<>',$this->id);
@@ -26,7 +26,16 @@ class Model_EmailTemplate extends \Model_Table {
 		$emailtemplate->addCondition('name',$this['name']);
 		$emailtemplate->tryLoadAny();
 		throw $this->exception('it is exist');
+		*/function beforeSave(){
+		$old_emailTemplate=$this->add('customerCareApp/Model_Emailtemplate');
+		if($this->loaded())
+			$old_emailtemplate->addCondition('id','<>',$this->id);
+		$old_emailtemplate->addCondition('name',$this['name']);
+		$old_emailtemplate->tryLoadAny();
+		if($old_emailtemplate->loaded())
+			throw $this->exception("Already Exists!!");
 		
+
 		
 	}
 	function beforeDelete(){

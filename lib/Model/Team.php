@@ -25,7 +25,7 @@ class Model_Team extends \Model_Table {
 	}
 
 	function beforeSave(){
-		$Model_Team=$this->add('customerCareApp/Model_Team');
+		/*$Model_Team=$this->add('customerCareApp/Model_Team');
 		$this->loaded();
 		if($Model_Team->loaded()){
 		$Model_Team->addCondition('id','<>',$this->id);
@@ -34,6 +34,16 @@ class Model_Team extends \Model_Table {
 		$team->tryLoadAny();
 		throw $this->exception('it is exist');
 		
+		*/
+		function beforeSave(){
+		$old_Team=$this->add('customerCareApp/Model_Team');
+		if($this->loaded())
+			$old_Team->addCondition('id','<>',$this->id);
+		$old_team->addCondition('name',$this['name']);
+		$old_Team->tryLoadAny();
+		if($old_Team->loaded())
+			throw $this->exception("Already Exists!!");
 		
+
 	}
 }

@@ -19,7 +19,7 @@ class Model_Ticket extends \Model_Table {
 		$this->add('dynamic_model/Controller_AutoCreator');
 	}
 
-	function beforeSave(){
+	/*function beforeSave(){
 		$ticket=$this->add('customerCareApp/Model_Ticket');
 		$this->loaded();
 		if($ticket->loaded()){
@@ -29,6 +29,16 @@ class Model_Ticket extends \Model_Table {
 		$ticket->tryLoadAny();
 		throw $this->exception('it is exist');
 		
+		*/
+		function beforeSave(){
+		$old_Ticket=$this->add('customerCareApp/Model_Ticket');
+		if($this->loaded())
+			$old_Ticket->addCondition('id','<>',$this->id);
+		$old_ticket->addCondition('name',$this['name']);
+		$old_Ticket->tryLoadAny();
+		if($old_Ticket->loaded())
+			throw $this->exception("Already Exists!!");
 		
+
 	}
 }

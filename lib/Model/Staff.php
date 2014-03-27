@@ -17,7 +17,7 @@ class Model_Staff extends \Model_Table {
 	}
 
 	function beforeSave(){
-		$staff=$this->add('customerCareApp/Model_Staff');
+		/*$staff=$this->add('customerCareApp/Model_Staff');
 		$this->loaded();
 		if($staff->loaded()){
 		$staff->addCondition('id','<>',$this->id);
@@ -25,7 +25,17 @@ class Model_Staff extends \Model_Table {
 		$staff->addCondition('name',$this['name']);
 		$staff->tryLoadAny();
 		throw $this->exception('it is exist');
+		*/
+		function beforeSave(){
+		$old_staff=$this->add('customerCareApp/Model_Staff');
+		if($this->loaded())
+			$old_staff->addCondition('id','<>',$this->id);
+		$old_staff->addCondition('name',$this['name']);
+		$old_staff->tryLoadAny();
+		if($old_staff->loaded())
+			throw $this->exception("Already Exists!!");
 		
+
 		
 	}
 }

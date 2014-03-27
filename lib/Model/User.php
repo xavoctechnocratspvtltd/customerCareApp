@@ -24,7 +24,7 @@ class Model_User extends \Model_Table {
 			throw $this->exception('You can not delete this.It has some Ticket...');
 	}
 
-	function beforeSave(){
+	/*function beforeSave(){
 		$user=$this->add('customerCareApp/Model_User');
 		$this->loaded();
 		if($user->loaded()){
@@ -33,7 +33,16 @@ class Model_User extends \Model_Table {
 		$user->addCondition('name',$this['name']);
 		$user->tryLoadAny();
 		throw $this->exception('it is exist');
+		*/
+		function beforeSave(){
+		$old_user=$this->add('customerCareApp/Model_User');
+		if($this->loaded())
+			$old_user->addCondition('id','<>',$this->id);
+		$old_user->addCondition('name',$this['name']);
+		$old_user->tryLoadAny();
+		if($old_user->loaded())
+			throw $this->exception("Already Exists!!");
 		
-		
+
 	}
 }

@@ -27,7 +27,7 @@ class Model_Department extends \Model_Table {
 
 	}
 
-	function beforeSave(){
+	/*function beforeSave(){
 		$company=$this->add('customerCareApp/Model_Department');
 		$this->loaded();
 		if($department->loaded()){
@@ -35,8 +35,17 @@ class Model_Department extends \Model_Table {
 		}
 		$department->addCondition('name',$this['name']);
 		$department->tryLoadAny();
-		throw $this->exception('it is exist');
+		throw $this->exception('it is exist')*/;
 		
+		function beforeSave(){
+		$old_department=$this->add('customerCareApp/Model_Department');
+		if($this->loaded())
+			$old_department->addCondition('id','<>',$this->id);
+		$old_department->addCondition('name',$this['name']);
+		$old_department->tryLoadAny();
+		if($old_department->loaded())
+			throw $this->exception("Already Exists!!");
 		
+
 	}
 }

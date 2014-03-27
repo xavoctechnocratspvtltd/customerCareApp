@@ -17,7 +17,7 @@ class Model_Issue extends \Model_Table {
 	}
 
 	function beforeSave(){
-		$issue=$this->add('customerCareApp/Model_Issue');
+		/*$issue=$this->add('customerCareApp/Model_Issue');
 		$this->loaded();
 		if($issue->loaded()){
 		$issue->addCondition('id','<>',$this->id);
@@ -25,7 +25,17 @@ class Model_Issue extends \Model_Table {
 		$issue->addCondition('name',$this['name']);
 		$issue->tryLoadAny();
 		throw $this->exception('it is exist');
+		*/
+		function beforeSave(){
+		$old_issue=$this->add('customerCareApp/Model_Issue');
+		if($this->loaded())
+			$old_issue->addCondition('id','<>',$this->id);
+		$old_issue->addCondition('name',$this['name']);
+		$old_issue->tryLoadAny();
+		if($old_issue->loaded())
+			throw $this->exception("Already Exists!!");
 		
+
 		
 	}
 }
