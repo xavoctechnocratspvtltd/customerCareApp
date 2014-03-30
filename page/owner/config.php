@@ -8,13 +8,6 @@ class page_customerCareApp_page_owner_config extends page_customerCareApp_page_o
 
 		$model=$this->add('customerCareApp/Model_Config');
 
-		$model->addCondition('epan_id',$this->api->current_website->id);
-		$model->loadAny();
-		$form=$this->add('Form');
-		$form->setModel($model);
-		$form->addSubmit('Submit');
-
-		
 		$model_loaded=$this->add('customerCareApp/Model_Config');
 		$model_loaded->addCondition('epan_id',$this->api->current_website->id);
 		$model_loaded->tryLoadAny();

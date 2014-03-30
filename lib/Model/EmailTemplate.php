@@ -7,9 +7,11 @@ class Model_EmailTemplate extends \Model_Table {
 	function init(){
 		parent::init();
 
-		$this->hasOne('customerCareApp/Company','customerCareApp_company_id');
-
+		$this->hasOne('Epan','epan_id');
+		
 		$this->addField('name');
+		$this->addField('subject');
+		$this->addField('msgbody')->type('text');
 
 		$this->addHook('beforeSave',$this);
 		$this->addHook('beforeDelete',$this);
@@ -17,16 +19,11 @@ class Model_EmailTemplate extends \Model_Table {
 		$this->add('dynamic_model/Controller_AutoCreator');
 	}
 
+	function beforeDelete(){
+		
+	}
+
 	function beforeSave(){
-		/*$emailtemplate=$this->add('customerCareApp/Model_Emailtemplate');
-		$this->loaded();
-		if($emailtemplate->loaded()){
-		$emailtemplate->addCondition('id','<>',$this->id);
-		}
-		$emailtemplate->addCondition('name',$this['name']);
-		$emailtemplate->tryLoadAny();
-		throw $this->exception('it is exist');
-		*/function beforeSave(){
 		$old_emailTemplate=$this->add('customerCareApp/Model_Emailtemplate');
 		if($this->loaded())
 			$old_emailtemplate->addCondition('id','<>',$this->id);
@@ -34,12 +31,6 @@ class Model_EmailTemplate extends \Model_Table {
 		$old_emailtemplate->tryLoadAny();
 		if($old_emailtemplate->loaded())
 			throw $this->exception("Already Exists!!");
-		
-
-		
-	}
-	function beforeDelete(){
-		
 	}
 
 }
