@@ -7,7 +7,7 @@ class Model_Staff extends \Model_Table {
 	function init(){
 		parent::init();
 
-		$this->hasOne('customerCareApp/Team','team_id');
+		$this->hasOne('customerCareApp/Department','department_id');
 
 		$this->addField('name');
 

@@ -8,15 +8,10 @@ class Model_Ticket extends \Model_Table {
 		parent::init();
 		$this->hasOne('customerCareApp/Customer','customer_id');
 		$this->hasOne('customerCareApp/Department','department_id');
-<<<<<<< HEAD
-		$this->hasOne('customerCareApp/User','user_id');
-		$this->hasOne('customerCareApp/TicketType','ticketType_id');
-		$this->hasOne('customerCareApp/Ticket_Priority','ticket_priority_id');
-=======
+
 		$this->hasOne('customerCareApp/TicketType','tickettype_id');
 		$this->hasOne('customerCareApp/TicketStatus','ticketstatus_id');
 		$this->hasOne('customerCareApp/TicketPriority','ticketpriority_id');
->>>>>>> 32a2004c577b7781786d07d3c0e2b57e3cb9ce0c
 
 		$this->addField('name');
 		$this->addField('subject');
