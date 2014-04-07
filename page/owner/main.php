@@ -5,6 +5,7 @@ class page_customerCareApp_page_owner_main extends page_componentBase_page_owner
 		parent::init();
 
 		$menu=$this->add('Menu');
+<<<<<<< HEAD
 		$menu->addMenuItem('customerCareApp_page_owner_company','Company');
 		$menu->addMenuItem('customerCareApp_page_owner_department','Department');
 		$menu->addMenuItem('customerCareApp_page_owner_team','Team');
@@ -16,6 +17,18 @@ class page_customerCareApp_page_owner_main extends page_componentBase_page_owner
 		$menu->addMenuItem('customerCareApp_page_owner_user','User');
 		$menu->addMenuItem('customerCareApp_page_owner_config','Configuration');
 		$menu->addMenuItem('customerCareApp_page_owner_ticket','Ticket');
+=======
+		$menu->addMenuItem('customerCareApp_page_owner_config','Configuration');
+		$menu->addMenuItem('customerCareApp_page_owner_customer','Customer');
+		$menu->addMenuItem('customerCareApp_page_owner_emailTemplate','Email Template');
+		$menu->addMenuItem('customerCareApp_page_owner_department','Department');
+		$menu->addMenuItem('customerCareApp_page_owner_staff','Staff');
+		$menu->addMenuItem('customerCareApp_page_owner_team','Team');
+		$menu->addMenuItem('customerCareApp_page_owner_ticket','Ticket');
+		$menu->addMenuItem('customerCareApp_page_owner_ticketPriority','Ticket Priority');
+		$menu->addMenuItem('customerCareApp_page_owner_ticketStatus','Ticket Status');
+		$menu->addMenuItem('customerCareApp_page_owner_ticketType','Ticket Type');
+>>>>>>> 32a2004c577b7781786d07d3c0e2b57e3cb9ce0c
 		
 	}
 }

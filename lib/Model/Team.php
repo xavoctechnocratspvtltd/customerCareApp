@@ -20,20 +20,19 @@ class Model_Team extends \Model_Table {
 	}
 
 	function beforeDelete(){
-		if($this->ref('customerCareApp/Staff')->count()->getOne()>0)
-			throw $this->exception('You can not delete this.It has some Staff Member...');
+		// if($this->ref('customerCareApp/Staff')->count()->getOne()>0)
+		// 	throw $this->exception('You can not delete this.It has some Staff Member...');
 	}
 
 	function beforeSave(){
-		$Model_Team=$this->add('customerCareApp/Model_Team');
-		$this->loaded();
-		if($Model_Team->loaded()){
-		$Model_Team->addCondition('id','<>',$this->id);
-		}
-		$team->addCondition('name',$this['name']);
-		$team->tryLoadAny();
-		throw $this->exception('it is exist');
+		$old_Team=$this->add('customerCareApp/Model_Team');
+		if($this->loaded())
+			$old_Team->addCondition('id','<>',$this->id);
+		$old_team->addCondition('name',$this['name']);
+		$old_Team->tryLoadAny();
+		if($old_Team->loaded())
+			throw $this->exception("Already Exists!!");
 		
-		
+
 	}
 }
