@@ -7,22 +7,26 @@ class Model_Customer extends \Model_Table {
 	function init(){
 		parent::init();
 
+		// $this->hasOne('customerCareApp/Config','config_id');
+
 		$this->addField('name');
 		$this->addField('phone_number');
 		$this->addField('email');
 		$this->addField('address');
+		$this->addField('password');
 
-		$this->hasMany('customerCareApp/Ticket','customerCareApp_customer_id');
+		$this->hasMany('customerCareApp/Ticket','customer_id');
+		$this->hasMany('customerCareApp/Project','customer_id');
 
-		$this->addHook('beforeDelete',$this);
+		// $this->addHook('beforeDelete',$this);
 		$this->addHook('beforeSave',$this);
 
 		$this->add('dynamic_model/Controller_AutoCreator');
 	}
 
-	function beforeDelete(){
+	// function beforeDelete(){
 		
-	}
+	// }
 
 	function beforeSave(){
 		//make email id uniq for each epan

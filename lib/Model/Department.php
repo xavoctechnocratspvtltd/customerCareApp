@@ -7,20 +7,21 @@ class Model_Department extends \Model_Table {
 	function init(){
 		parent::init();
 
+		// $this->hasOne('customerCareApp/Config','config_id');
 
 		$this->addField('name');
+		$this->addField('description')->type('text');
 
 		$this->hasMany('customerCareApp/Staff','department_id');
-		$this->hasMany('customerCareApp/Ticket','department_id');
 
-		$this->addHook('beforeDelete',$this);
+		// $this->addHook('beforeDelete',$this);
 		$this->addHook('beforeSave',$this);
 
 		$this->add('dynamic_model/Controller_AutoCreator');
 	}
-	function beforeDelete(){
+	// function beforeDelete(){
 	
-	}
+	// }
 	
 	function beforeSave(){
 		//One epan can not have two or more same name department

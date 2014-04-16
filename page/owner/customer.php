@@ -4,5 +4,6 @@
 				parent::init();
 					$user_crud = $this->add('CRUD');
 					$user_crud->setModel('customerCareApp/Customer');
+					$user_crud->addRef('customerCareApp/Project',array('label'=>'Project'));
 			}
 	}
