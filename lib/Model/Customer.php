@@ -28,6 +28,26 @@ class Model_Customer extends \Model_Table {
 		
 	// }
 
+	function tryLogin($email,$password){
+
+		$customer=$this->add('customerCareApp/Model_Customer');
+
+		$customer->addCondition('email',$email); 
+		$customer->addCondition('password',$password);
+		$customer->tryLoadAny();
+
+		if($customer->loaded()){
+			$this->api->memorize('logged_in_user',$email);
+			$this->api->memorize('type_of_user','customer');
+			return true;
+		}
+		else{
+			$this->api->forget('logged_in_user',$email);
+			$this->api->forget('type_of_user','customer');
+			return false;
+		}
+	}
+
 	function beforeSave(){
 		//make email id uniq for each epan
 

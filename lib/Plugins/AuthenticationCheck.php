@@ -22,15 +22,22 @@ class Plugins_AuthenticationCheck extends \componentBase\Plugin{
 		// ONLY WORKS FOR PAGES CONTAINS "xsocial-" IN PAGE
 		// DO NOT CHECK FOR xsocial-login PAGE
 
-		$allowed_page=array('xcustomercare-stafflogin','xcustomercare-customerdashboard');
+		$allowed_page=array('xcustomercare-stafflogin','xcustomercare-customerlogin');
 
 		if(strpos($subpage,	'xcustomercare-') === 0 AND !in_array($subpage, $allowed_page)){
 			$allowed_page = array(
 					'staff'=>array(),
+					'customer'=>array(),
 				);
 
 			$login_page=array(
 					'staff'=>'xcustomercare-stafflogin',
+					'customer'=>'xcustomercare-customerlogin',
+				);
+
+			$model=array(
+					'staff'=>'Staff',
+					'customer'=>'Customer',
 				);
 			
 			// IF session has logged_in_user value meanse user is there
@@ -41,6 +48,9 @@ class Plugins_AuthenticationCheck extends \componentBase\Plugin{
 			if(!$logged_in_user){
 				if(in_array($subpage, $allowed_page['staff'])){
 					$this->api->redirect($this->api->url(null,array('subpage'=>$login_page['staff'])));
+				}
+				if(in_array($subpage, $allowed_page['customer'])){
+					$this->api->redirect($this->api->url(null,array('subpage'=>$login_page['customer'])));
 				}
 				
 				$this->api->redirect($this->api->url(null,array('subpage'=>'home')));

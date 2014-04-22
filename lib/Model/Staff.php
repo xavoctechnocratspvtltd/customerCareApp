@@ -31,7 +31,7 @@ class Model_Staff extends \Model_Table {
 
 	function tryLogin($email,$password){
 
-	 	$staff=$this->add('customerCareApp/Model_Staff');
+		$staff=$this->add('customerCareApp/Model_Staff');
 
 		$staff->addCondition('email',$email); 
 		$staff->addCondition('password',$password);
@@ -39,18 +39,15 @@ class Model_Staff extends \Model_Table {
 
 		if($staff->loaded()){
 			$this->api->memorize('logged_in_user',$email);
-			$this->api->memorize('type_of_user',$email);
+			$this->api->memorize('type_of_user','staff');
 			return true;
-			}
-			else{
-				$this->api->forget('logged_in_user',$email);
-				$this->api->forget('type_of_user',$email);
-				return false;
-				
-			}
-
-	 	
-	 }
+		}
+		else{
+			$this->api->forget('logged_in_user',$email);
+			$this->api->forget('type_of_user','staff');
+			return false;
+		}
+	}
 
 
 	// function beforeSave(){

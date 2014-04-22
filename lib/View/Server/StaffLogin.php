@@ -27,7 +27,7 @@ class View_Server_StaffLogin extends \View{
 		 		$form->displayError('email','Wrong input');
 		 	
 				// Redirect to Dashboard
-				$this->js()->univ()->redirect($this->api->url(null,array('subpage'=>'xcustomercare-staffdashboard')))->execute();
-			}
+			$this->js()->univ()->redirect($this->api->url(null,array('subpage'=>'xcustomercare-staffdashboard')))->execute();
+		}
 	}
 }
