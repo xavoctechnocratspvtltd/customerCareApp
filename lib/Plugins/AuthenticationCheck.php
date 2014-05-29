@@ -22,12 +22,25 @@ class Plugins_AuthenticationCheck extends \componentBase\Plugin{
 		// ONLY WORKS FOR PAGES CONTAINS "xsocial-" IN PAGE
 		// DO NOT CHECK FOR xsocial-login PAGE
 
-		$allowed_page=array('xcustomercare-stafflogin','xcustomercare-customerlogin');
+		$allowed_page=array('xcustomercare-stafflogin','xcustomercare-customerlogin','xcustomercare-guestdashboard','xcustomercare-faqs');
 
 		if(strpos($subpage,	'xcustomercare-') === 0 AND !in_array($subpage, $allowed_page)){
 			$allowed_page = array(
-					'staff'=>array(),
-					'customer'=>array(),
+					'staff'=>array('xcustomercare-stafflogin'
+						,'xcustomercare-staffdashboard'
+						,'xcustomercare-staffprofile'
+						,'xcustomercare-profile'
+						,'xcustomercare-staffticket'
+						,'xcustomercare-staffproject'
+						,'xcustomercare-faqs'
+						),
+					'customer'=>array('xcustomercare-customeropenticket'
+						,'xcustomercare-customerdashboard'
+						,'xcustomercare-customerticketstatus'
+						,'xcustomercare-customerprofile'
+						,'xcustomercare-customerfaqs'
+
+						),
 				);
 
 			$login_page=array(
@@ -56,13 +69,13 @@ class Plugins_AuthenticationCheck extends \componentBase\Plugin{
 				$this->api->redirect($this->api->url(null,array('subpage'=>'home')));
 			}
 			
-			// if(!in_array($subpage, $allowed_page[$type_of_user])){				
-			// 	$this->api->redirect($this->api->url(null,array('subpage'=>$login_page[$type_of_user])));
-			// }
+			if(!in_array($subpage, $allowed_page[$type_of_user])){				
+				$this->api->redirect($this->api->url(null,array('subpage'=>$login_page[$type_of_user])));
+			}
 
 			$xcustomercareauth =$this->add('BasicAuth',array('is_default_auth'=>false));
-			$xcustomercareauth->setModel('customerCareApp/Staff','email','password');
-			$this->api->xcustomercareauth = $xcustomercareauth;
+			$xcustomercareauth->setModel('customerCareApp/'.$model[$type_of_user],'email','password');
+			$this->api->xcustomercareauth  = $xcustomercareauth;
 				
 			// TODO :: Set cu_id = null when logout
 
@@ -72,8 +85,5 @@ class Plugins_AuthenticationCheck extends \componentBase\Plugin{
 	}
 
 	function getDefaultParams($new_epan){  
-		//$this->addFOrm()
-		//$this->addFOrm()
-
 	}
 }

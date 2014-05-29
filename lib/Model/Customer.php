@@ -9,11 +9,11 @@ class Model_Customer extends \Model_Table {
 
 		// $this->hasOne('customerCareApp/Config','config_id');
 
-		$this->addField('name');
-		$this->addField('phone_number');
+		$this->addField('name')->mandatory(true);
+		$this->addField('phone_number')->type('number');
 		$this->addField('email');
-		$this->addField('address');
-		$this->addField('password');
+		$this->addField('address')->type('text');
+		$this->addField('password')->type('password')->mandatory(true);
 
 		$this->hasMany('customerCareApp/Ticket','customer_id');
 		$this->hasMany('customerCareApp/Project','customer_id');

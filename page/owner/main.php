@@ -8,6 +8,7 @@ class page_customerCareApp_page_owner_main extends page_componentBase_page_owner
 
 		$menu->addMenuItem('customerCareApp_page_owner_config','Configuration');
 		$menu->addMenuItem('customerCareApp_page_owner_customer','Customer');
+		$menu->addMenuItem('customerCareApp_page_owner_comment','Comment');
 		$menu->addMenuItem('customerCareApp_page_owner_emailTemplate','Email Template');
 		$menu->addMenuItem('customerCareApp_page_owner_department','Department');
 		$menu->addMenuItem('customerCareApp_page_owner_staff','Staff');
@@ -16,6 +17,7 @@ class page_customerCareApp_page_owner_main extends page_componentBase_page_owner
 		$menu->addMenuItem('customerCareApp_page_owner_ticketPriority','Ticket Priority');
 		$menu->addMenuItem('customerCareApp_page_owner_ticketStatus','Ticket Status');
 		$menu->addMenuItem('customerCareApp_page_owner_ticketType','Ticket Type');
+		$menu->addMenuItem('customerCareApp_page_owner_faq','FAQs');
 		
 	}
 }

@@ -6,8 +6,7 @@ class View_Server_CustomerLogin extends \View{
 	function init(){
 		parent::init();
 
-		// $this->add('View_Info')->set('I Am Customer Login');
-		$this->add('H1')->set('Customer Login Panel')->setAttr('align','center');
+		$this->add('H1')->set('Customer Login')->setAttr('align','center');
 		$form=$this->add('Form');
 		$form->addField('line','email')->validateNotNull('Required Field');
 		$form->addField('password','password')->validateNotNull('Required Field');

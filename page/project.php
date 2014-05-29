@@ -5,11 +5,9 @@ class page_customerCareApp_page_project extends Page{
 
 		$this->api->stickyGET('project_id');
 
-
-
 		$form=$this->add('Form');
 		$model=$this->add('customerCareApp/Model_Project');
-		$model->addCondition('project_id',$this->api->xcustomercareauth->model->id);
+		$model->addCondition('staff_id',$this->api->xcustomercareauth->model->id);
 		if($_GET['project_id'])
 			$model->load($_GET['project_id']);
 		$form->setModel($model);

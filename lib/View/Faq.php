@@ -2,9 +2,9 @@
 
 namespace customerCareApp;
 
-class View_StaffProfile extends \componentBase\View_ServerSideComponent {
+class View_Faq extends \componentBase\View_ServerSideComponent {
 	public $responsible_namespace = __NAMESPACE__;
-	public $responsible_view = 'View_Server_StaffProfile';
+	public $responsible_view = 'View_Server_Faq';
 	public $is_sortable = false;
 	public $is_resizable=false;
 }

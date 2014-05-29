@@ -7,7 +7,7 @@ class View_Server_StaffLogin extends \View{
 		parent::init();
 
 	
-		$this->add('H1')->set('Staff Login Panel')->setAttr('align','center');
+		$this->add('H1')->set('Staff Login')->setAttr('align','center');
 		$form=$this->add('Form');
 		$form->addField('line','email')->validateNotNull('Required Field');
 		$form->addField('password','password')->validateNotNull('Required Field');

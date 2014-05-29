@@ -10,16 +10,16 @@ class Model_Staff extends \Model_Table {
 		// $this->hasOne('customerCareApp/Config','config_id');
 		$this->hasOne('customerCareApp/Department','department_id');
 
-		$this->addField('name');
-		$this->addField('employee_code');
-		$this->addField('designation');
-		$this->addField('phone_number');
-		$this->addField('email');
-		$this->addField('address');
+		$this->addField('name')->mandatory(true);
+		$this->addField('employee_code')->mandatory(true);
+		$this->addField('designation')->mandatory(true);
+		$this->addField('phone_number')->type('number');
+		$this->addField('email')->mandatory(true);
+		$this->addField('address')->type('text');
 		$this->addField('gender')->enum(array('Male','Female'));
 		$this->addField('dob')->type('date');
 		$this->addField('doj')->type('date');
-		$this->addField('password');
+		$this->addField('password')->type('password')->mandatory(true);
 
 		$this->hasMany('customerCareApp/Ticket','staff_id');
 		$this->hasMany('customerCareApp/Project','staff_id');

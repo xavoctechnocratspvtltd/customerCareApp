@@ -17,8 +17,11 @@ class Model_Ticket extends \Model_Table {
 		$this->hasOne('customerCareApp/TicketStatus','ticketstatus_id');
 
 		// $this->addField('name');
+		$this->addField('name')->caption('ticket_no');
 		$this->addField('subject');
 		$this->addField('detail')->type('text');
+
+		$this->hasMany('customerCareApp/Comment','ticket_id');
 
 		// $this->addHook('beforeSave',$this);
 

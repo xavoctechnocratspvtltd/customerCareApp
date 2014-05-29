@@ -6,8 +6,8 @@ class View_Server_ProjectManagement extends \View{
 	function init(){
 		parent::init();
 
-		$add_btn=$this->add('Button')->set('Add');
-		$add_btn->js('click')->univ()->frameURL('Add Project',$this->api->url('customerCareApp_page_project'));
+		$add_btn=$this->add('Button')->set('Add New Project')->setStyle('margin:1% 0 1% 1%;');
+		$add_btn->js('click')->univ()->frameURL('New Project',$this->api->url('customerCareApp_page_project'));
 		$grid=$this->add('Grid');
 
 		if($_GET['edit']){
